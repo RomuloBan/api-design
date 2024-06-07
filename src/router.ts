@@ -7,7 +7,7 @@ const router = Router()
  */
 router.get('/product', (req, res) => {
   res.json({
-    message: req.shhhh_secret
+    message: 'product'
   })
 })
 router.get('/product/:id', (req, res) => {})
