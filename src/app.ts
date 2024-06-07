@@ -2,6 +2,7 @@ import express from 'express'
 import router from './router'
 import morgan from 'morgan'
 import cors from 'cors'
+import {protect} from './modules/auth'
 
 const app = express()
 // Middleware
@@ -10,14 +11,6 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-const customMiddleware = (message) => (req, res, next) => {
-  console.log(message)
-  next()
-}
-
-// Silly middleware
-app.use(customMiddleware('Hello from middleware!'))
-
-app.use('/api', router)
+app.use('/api', protect, router)
 
 export default app
