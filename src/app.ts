@@ -1,7 +1,10 @@
 import express from 'express'
 import router from './router'
+import morgan from 'morgan'
 
 const app = express()
+// Middleware
+app.use(morgan('dev'))
 
 app.use('/api', router)
 
